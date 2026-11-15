@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Agende seu horário na BOZEZZ Barbearia, avalie sua experiência e veja como chegar. Jardim Centenário, Aracaju, SE.">
+    <meta name="theme-color" content="#F6F4F0">
+    <meta name="color-scheme" content="light">
+    <meta name="referrer" content="no-referrer">
+    <title>BOZEZZ Barbearia — Seu estilo começa aqui.</title>
+    <link rel="icon" type="image/png" href="assets/bozezz_logo_referencia_150px.png">
+    <link rel="preload" href="assets/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <main class="hub" id="conteudo">
+        <img class="brand" src="assets/bozezz_logo_referencia_150px.png" width="144" height="144" alt="BOZEZZ Barbearia" fetchpriority="high" decoding="async">
+        <h1>Seu estilo<br>começa aqui.</h1>
+        <p class="intro">Agende seu próximo horário, avalie sua experiência ou encontre a BOZEZZ.</p>
+
+        <nav class="actions" aria-label="Ações principais">
+          <a class="action action--primary" href="https://cashbarber.com.br/bozezzbarbearia/inicio">
+            <span>Agendar meu horário<span class="sr-only"> no Cash Barber</span></span>
+            <svg class="action__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M5 15 15 5M5 5h10v10"/></svg>
+          </a>
+          <a class="action" href="https://search.google.com/local/writereview?placeid=ChIJeexkuOizGgcRpSuml3Wcl9c">
+            <span>Avaliar no Google</span>
+            <svg class="action__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M5 15 15 5M5 5h10v10"/></svg>
+          </a>
+          <a class="action" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bozezz%20Barbearia&amp;destination_place_id=ChIJeexkuOizGgcRpSuml3Wcl9c">
+            <span>Como chegar<span class="sr-only"> no Google Maps</span></span>
+            <svg class="action__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M5 15 15 5M5 5h10v10"/></svg>
+          </a>
+        </nav>
+        <p class="region">Jardim Centenário · Aracaju, SE</p>
+      </main>
+
+      <footer class="footer">
+        <button class="privacy-link" id="privacy-trigger" type="button" aria-haspopup="dialog" aria-controls="privacy-dialog" hidden>Privacidade</button>
+        <noscript><a class="privacy-link" href="#privacidade-sem-javascript">Privacidade</a></noscript>
+        <p class="copyright">© <span id="year">2026</span> BOZEZZ Barbearia</p>
+      </footer>
+    </div>
+
+    <dialog class="privacy-dialog" id="privacy-dialog" aria-labelledby="privacy-title">
+      <button class="dialog-close" id="privacy-close" type="button" aria-label="Fechar privacidade">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+      <p class="eyebrow">BOZEZZ BARBEARIA</p>
+      <h2 id="privacy-title" tabindex="-1">Privacidade</h2>
+      <p>Esta página não utiliza cookies de análise, publicidade ou ferramentas de rastreamento e não possui formulários de cadastro.</p>
+      <p>Ao acessar o agendamento ou o Google, você passa a utilizar serviços externos, que seguem suas próprias políticas de privacidade.</p>
+      <p>O serviço que hospeda a página pode registrar informações técnicas de acesso, como endereço IP, data e horário, para operar o site.</p>
+    </dialog>
+
+    <noscript>
+      <section class="privacy-fallback" id="privacidade-sem-javascript" aria-labelledby="privacy-fallback-title">
+        <h2 id="privacy-fallback-title">Privacidade</h2>
+        <p>Esta página não utiliza cookies de análise, publicidade ou ferramentas de rastreamento e não possui formulários de cadastro. Os serviços externos de agendamento e do Google seguem suas próprias políticas de privacidade. A hospedagem pode registrar informações técnicas de acesso, como endereço IP, data e horário, para operar o site.</p>
+      </section>
+    </noscript>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+# Arquivos locais de referência e versões anteriores do design.
+/arquivo/
+/design_v1/
+/.design_workflow/
+/.bozezz-*.tmp.html
+/*.zip
+
+# Arquivos temporários do sistema e do editor.
+.DS_Store
+Thumbs.db
+*.swp
