@@ -1,0 +1,8 @@
+# Enviar somente os arquivos necessários ao site e à função /qr.
+/*
+!api
+!assets
+!index.html
+!styles.css
+!script.js
+!vercel.json
