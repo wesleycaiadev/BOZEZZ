@@ -5,6 +5,11 @@
 /.bozezz-*.tmp.html
 /*.zip
 
+# Configuração local e variáveis de ambiente.
+.vercel/
+.env*
+!.env.example
+
 # Arquivos temporários do sistema e do editor.
 .DS_Store
 Thumbs.db

@@ -6,7 +6,35 @@ Repositório: [wesleycaiadev/BOZEZZ](https://github.com/wesleycaiadev/BOZEZZ).
 
 ## Abrir
 
-Abra `index.html` no navegador ou use um servidor estático local, como o Live Server do editor. Para hospedar, envie `index.html`, `styles.css`, `script.js` e a pasta `assets/`, preservando os caminhos. O envio ao GitHub disponibiliza o código; a hospedagem do site ainda não foi configurada.
+Abra `index.html` no navegador ou use um servidor estático local, como o Live Server do editor. Para hospedar somente a página principal, envie `index.html`, `styles.css`, `script.js` e a pasta `assets/`, preservando os caminhos. Para executar também `/qr`, publique o repositório na Vercel incluindo `api/` e `vercel.json`, conforme a configuração abaixo.
+
+## Rota estável do QR Code na Vercel
+
+O QR Code impresso deve apontar para **https://bozezz.vercel.app/qr**. A Vercel encaminha internamente `/qr` para a função `api/qr.js`, que devolve HTTP **307**, cabeçalho `Location` e corpo vazio. Não há tela, HTML, JavaScript de redirecionamento nem alteração na página principal.
+
+O destino padrão é `https://bozezz.vercel.app/`. Para mudar o destino:
+
+1. Na Vercel, abra o projeto BOZEZZ e acesse **Settings → Environment Variables**.
+2. Defina `QR_REDIRECT_URL` com uma URL completa HTTP(S), por exemplo `https://bozezz.vercel.app/`.
+3. Selecione **Production** e faça um novo deploy. Mudanças de variável só entram em novos deployments, conforme a [documentação da Vercel](https://vercel.com/docs/environment-variables).
+
+O endereço impresso continua sendo `/qr`; não é necessário gerar outro QR Code. A variável é lida exclusivamente no servidor a cada requisição, sem prefixo `NEXT_PUBLIC_`. Uma variável ausente ou vazia usa o padrão. Uma URL inválida responde 500 sem redirecionar. Não configure como destino o próprio `/qr`, para evitar um ciclo de redirecionamentos. `Cache-Control: no-store` evita guardar um destino antigo no navegador ou CDN.
+
+Este repositório continua em HTML/CSS/JavaScript, conforme confirmado. A rota é uma [Vercel Function Node.js](https://vercel.com/docs/functions/runtimes/node-js), mapeada por `vercel.json`, sem migração para Next.js. Um servidor de arquivos estáticos como Live Server não executa essa função; para testar a integração de deploy, use a Vercel com **Framework Preset: Other**, raiz neste repositório e sem diretório de saída personalizado.
+
+Teste automatizado, sem instalar dependências (validado com Node.js 24):
+
+```sh
+node --test --test-isolation=none tests/qr.test.cjs
+```
+
+Após o deploy, confira a primeira resposta sem seguir o redirecionamento:
+
+```sh
+curl -I https://bozezz.vercel.app/qr
+```
+
+O resultado esperado é `307` com `Location: https://bozezz.vercel.app/` (ou o valor de `QR_REDIRECT_URL`).
 
 ## Arquivos
 
@@ -16,6 +44,10 @@ Abra `index.html` no navegador ou use um servidor estático local, como o Live S
 | `styles.css` | Visual, fontes locais, responsividade e foco |
 | `script.js` | Abrir/fechar privacidade e atualizar o ano |
 | `assets/` | Logo original, fontes WOFF2 e respectivas licenças |
+| `api/qr.js` | Resposta HTTP 307 com destino configurável no servidor |
+| `vercel.json` | Encaminhamento interno de `/qr` para a função |
+| `.env.example` | Exemplo da variável `QR_REDIRECT_URL` |
+| `tests/qr.test.cjs` | Testes HTTP da função e conferência do mapeamento |
 
 Os materiais antigos e o ZIP do design aprovado permanecem na pasta local `arquivo/`, ignorada pelo Git. Eles não fazem parte do site nem do repositório.
 
